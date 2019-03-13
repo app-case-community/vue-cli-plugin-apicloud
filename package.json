@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/app-case-community/vue-cli-plugin-apicloud.git"
   },
+  "keywords": [
+    "apicloud",
+    "vue"
+  ],
   "author": "Zhe Zhu",
   "license": "MIT"
 }
