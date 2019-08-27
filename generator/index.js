@@ -1,6 +1,7 @@
 module.exports = (api, opts, rootOptions) => {
     api.extendPackage({
         scripts: {
+            "ac": "vue-cli-service ac",
             "wifi-start": "apicloud wifiStart --port 10915",
             "wifi-stop": "apicloud wifiStop --port 10915",
             "wifi-sync": "cross-env PLATFORM_ENV=none vue-cli-service build && apicloud wifiSync --project dist --updateAll false --port 10915 && apicloud wifiLog --port 10915",
