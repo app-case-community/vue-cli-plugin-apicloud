@@ -5,10 +5,10 @@
 </template>
 <script>
 export default {
-  onReady() {
-    this.$api.dom(".empty").innerHTML = this.api.pageParam.name + "页";
+  onReady () {
+    this.$api.dom('.empty').innerHTML = this.api.pageParam.name + '页'
   }
-};
+}
 </script>
 <style>
 html,

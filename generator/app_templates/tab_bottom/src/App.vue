@@ -34,84 +34,84 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       tabs: [
         {
-          title: "云API",
-          page: "frame0.html",
+          title: '云API',
+          page: 'frame0.html',
           active: true
         },
         {
-          title: "端API",
-          page: "frame1.html",
+          title: '端API',
+          page: 'frame1.html',
           active: false
         },
         {
-          title: "开发",
-          page: "frame2.html",
+          title: '开发',
+          page: 'frame2.html',
           active: false
         },
         {
-          title: "文档",
-          page: "frame3.html",
+          title: '文档',
+          page: 'frame3.html',
           active: false
         }
       ]
-    };
+    }
   },
-  onReady() {
-    // this.$api.fixStatusBar(this.$api.dom("header"));
+  onReady () {
+    this.$api.fixStatusBar(this.$api.dom('header'))
     this.api.setStatusBarStyle({
-      style: "dark",
-      color: "#6ab494"
-    });
-    this.funIniGroup();
+      style: 'dark',
+      color: '#6ab494'
+    })
+    this.funIniGroup()
   },
   computed: {
-    tabIdx() {
-      return this.tabs.findIndex(it => it.active);
+    tabIdx () {
+      return this.tabs.findIndex(it => it.active)
     }
   },
   methods: {
-    funIniGroup() {
-      var frames = [];
+    funIniGroup () {
+      var frames = []
       for (var i = 0, len = this.tabs.length; i < len; i++) {
         var page = this.tabs[i].page.endsWith('.html') ? this.tabs[i].page : `${this.tabs[i].page}.html`
         frames.push({
-          name: "frame" + i,
+          name: 'frame' + i,
           url: page,
-          bgColor: "rgba(0,0,0,.2)",
+          bgColor: 'rgba(0,0,0,.2)',
           bounces: true
-        });
+        })
       }
       this.api.openFrameGroup(
         {
-          name: "group",
+          name: 'group',
           scrollEnabled: false,
           rect: {
             x: 0,
-            y: this.$api.dom("header").offsetHeight,
+            y: this.$api.dom('header').offsetHeight,
             w: this.api.winWidth,
-            h: this.$api.dom("#main").offsetHeight
+            h: this.$api.dom('#main').offsetHeight
           },
           index: 0,
           frames: frames
         },
         // eslint-disable-next-line no-unused-vars
-        function(ret, err) {}
-      );
+        function (ret, err) {}
+      )
     },
-    randomSwitchBtn(idx) {
-      this.tabs[this.tabIdx].active = false;
-      this.tabs[idx].active = true;
+    randomSwitchBtn (idx) {
+      this.tabs[this.tabIdx].active = false
+      this.tabs[idx].active = true
       this.api.setFrameGroupIndex({
-            name: 'group',
-            index: idx
-        });
+        name: 'group',
+        index: idx
+      })
     }
   }
-};
+}
 </script>
 <style>
 html,

@@ -3,24 +3,24 @@
 </template>
 <script>
 export default {
-  onReady() {
+  onReady () {
     this.api.openSlidLayout(
       {
-        type: "left",
+        type: 'left',
         leftEdge: 60,
         fixedPane: {
-          name: "fixed",
-          url: "fixed.html"
+          name: 'fixed',
+          url: 'fixed.html'
         },
         slidPane: {
-          name: "slide",
-          url: "slide.html"
+          name: 'slide',
+          url: 'slide.html'
         }
       },
-      function() {}
-    );
+      function () {}
+    )
   }
-};
+}
 </script>
 <style>
 html {

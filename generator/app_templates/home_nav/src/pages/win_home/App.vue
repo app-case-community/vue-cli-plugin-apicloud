@@ -132,28 +132,29 @@
 </template>
 <script>
 export default {
-  mounted() {
-    new window.Swipe(this.$api.dom(".swipe"), {
+  mounted () {
+    // eslint-disable-next-line no-new
+    new window.Swipe(this.$api.dom('.swipe'), {
       speed: 400,
       auto: 3000,
       continuous: true,
       disableScroll: false,
       stopPropagation: false,
-      transitionEnd: function() {}
-    });
+      transitionEnd: function () {}
+    })
   },
   methods: {
-    funOpenArticle(idx) {
+    funOpenArticle (idx) {
       this.api.openWin({
-        name: "win_webpage",
-        url: "./win_webpage.html",
+        name: 'win_webpage',
+        url: './win_webpage.html',
         pageParam: {
           name: '标题' + idx
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 <style>
 html,

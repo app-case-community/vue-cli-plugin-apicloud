@@ -11,6 +11,11 @@ const install = (Vue) => {
           this.$options.onWindowChange && this.$options.onWindowChange.bind(this).call()
         })
       }
+    },
+    mounted () {
+      if (this.$root.$children.length > 0 && this.$root.$children[0] === this) {
+        this.api && this.api.parseTapmode()
+      }
     }
   })
 }

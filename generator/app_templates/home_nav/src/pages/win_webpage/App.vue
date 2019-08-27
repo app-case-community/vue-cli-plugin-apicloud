@@ -26,41 +26,42 @@
 </template>
 <script>
 export default {
-  onReady() {
-    this.$api.dom(".title").innerHTML = this.api.pageParam.name;
+  onReady () {
+    this.$api.fixStatusBar(this.$api.dom('header'))
+    this.$api.dom('.title').innerHTML = this.api.pageParam.name
     this.api.openFrame({
-      name: "frm_mine",
-      url: "./frm_mine.html",
+      name: 'frm_mine',
+      url: './frm_mine.html',
       rect: {
         x: 0,
-        y: this.$api.dom("header").offsetHeight,
+        y: this.$api.dom('header').offsetHeight,
         w: this.api.winWidth,
-        h: this.$api.dom("#main").offsetHeight
+        h: this.$api.dom('#main').offsetHeight
       },
       bounces: true,
       pageParam: {
         name: this.api.pageParam.name
       }
-    });
+    })
   },
   methods: {
-    funActionSheet() {
+    funActionSheet () {
       this.api.actionSheet(
         {
-          title: "底部弹出框",
-          cancelTitle: "取消",
-          destructiveTitle: "红色警告按钮",
-          buttons: ["按钮1", "按钮2", "按钮3"]
+          title: '底部弹出框',
+          cancelTitle: '取消',
+          destructiveTitle: '红色警告按钮',
+          buttons: ['按钮1', '按钮2', '按钮3']
         },
-        function() {
+        function () {
           // api.alert({
           //     msg: '你刚点击了'+ret.buttonIndex
           // });
         }
-      );
+      )
     }
   }
-};
+}
 </script>
 <style>
 html,

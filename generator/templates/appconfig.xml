@@ -4,7 +4,6 @@
 <content src="index.html"/>
 <access origin="*"/>
 <preference name="smartUpdate" value="false"/>
-<preference name="statusBarAppearance" value="false" />
 <preference name="windowBackground" value="#FFFFFF" />
 <preference name="debug" value="true"/>
 </widget>

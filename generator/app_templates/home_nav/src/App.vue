@@ -14,23 +14,24 @@
 </template>
 <script>
 export default {
-  onReady() {
+  onReady () {
+    this.$api.fixStatusBar(this.$api.dom('header'))
     this.api.setStatusBarStyle({
-      style: "dark",
-      color: "#6ab494"
-    });
+      style: 'dark',
+      color: '#6ab494'
+    })
     this.api.openFrame({
-      name: "win_home",
-      url: "win_home.html",
+      name: 'win_home',
+      url: 'win_home.html',
       rect: {
         x: 0,
-        y: this.$api.dom("header").offsetHeight,
+        y: this.$api.dom('header').offsetHeight,
         w: this.api.winWidth,
-        h: this.$api.dom("#main").offsetHeight
+        h: this.$api.dom('#main').offsetHeight
       }
-    });
+    })
   }
-};
+}
 </script>
 <style>
 html,

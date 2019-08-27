@@ -1,6 +1,9 @@
 (function (window) {
   window.$init = function (fn) {
     window.apiready = function () {
+      if (window.api.systemType === 'ios') {
+        document.addEventListener('touchstart', function () {}, false)
+      }
       document.dispatchEvent(new MessageEvent('apiready', {
         data: {}
       }))

@@ -9,18 +9,18 @@
 </template>
 <script>
 export default {
-    onReady () {
-        this.api.addEventListener({
-            name: 'keyback'
-        }, () => {
-            this.api.closeWidget();
-        });
-    },
-    methods: {
-        sliding () {
-            this.api.openSlidPane({type: 'left'});
-        }
+  onReady () {
+    this.api.addEventListener({
+      name: 'keyback'
+    }, () => {
+      this.api.closeWidget()
+    })
+  },
+  methods: {
+    sliding () {
+      this.api.openSlidPane({ type: 'left' })
     }
+  }
 }
 </script>
 <style>
@@ -31,7 +31,7 @@ header {
 .header {
     display: -webkit-box;
     display: -webkit-flex;
-    display: flex;            
+    display: flex;
 }
 .header a{
     display: block;

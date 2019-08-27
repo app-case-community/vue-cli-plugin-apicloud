@@ -13,29 +13,29 @@
 </template>
 <script>
 export default {
-    data () {
-      return  {
-        year: new Date().getFullYear()
-      }
-    },
-    onReady () {
-        var header = this.$api.byId('header');
-        // this.$api.fixStatusBar(header);
-        var headerPos = this.$api.offset(header);
-        var main = this.$api.byId('main');
-        var mainPos = this.$api.offset(main);
-        this.api.openFrame({
-            name: 'main',
-            url: 'main.html',
-            bounces: true,
-            rect: {
-                x: 0,
-                y: headerPos.h,
-                w: 'auto',
-                h: mainPos.h
-            }
-        });
+  data () {
+    return {
+      year: new Date().getFullYear()
     }
+  },
+  onReady () {
+    var header = this.$api.byId('header')
+    this.$api.fixStatusBar(header)
+    var headerPos = this.$api.offset(header)
+    var main = this.$api.byId('main')
+    var mainPos = this.$api.offset(main)
+    this.api.openFrame({
+      name: 'main',
+      url: 'main.html',
+      bounces: true,
+      rect: {
+        x: 0,
+        y: headerPos.h,
+        w: 'auto',
+        h: mainPos.h
+      }
+    })
+  }
 }
 </script>
 <style>
