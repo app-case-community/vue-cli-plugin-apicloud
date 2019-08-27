@@ -20,9 +20,14 @@ Object.defineProperty(Vue.prototype, '$api', {
 // 打开页面
 var _openw = null
 Vue.prototype.$page = {
-  open (url, { title, anim, titleBarOpts, winOpts } = {}) {
+  open(url, { title, anim, titleBarOpts, winOpts } = {}) {
     if (_openw) { return } // 防止快速点击
+    url = url.endsWith('.html') ? url : url + '.html'
     var api = window.api
+    if (!api) {
+      window.location.href = url
+      return
+    }
     var name = `win_${url}`
     var params = {
       name,
@@ -42,7 +47,11 @@ Vue.prototype.$page = {
     }
     api.openWin(params)
   },
-  close () {
+  close() {
+    if (!window.api) {
+      window.history.back()
+      return
+    }
     window.api.closeWin()
   }
 }

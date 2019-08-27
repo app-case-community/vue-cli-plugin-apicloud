@@ -14,4 +14,8 @@ module.exports = (api, opts, rootOptions) => {
         }
     })
     api.render('./templates')
+    console.log('opts.appTemplate', opts.appTemplate)
+    if (opts.appTemplate) {
+        api.render('./app_templates/' + opts.appTemplate)
+    }
 }

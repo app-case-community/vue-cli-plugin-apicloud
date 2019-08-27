@@ -7,29 +7,9 @@ const autoPages = (pages) => {
     const page = pages[i]
     if (page === undefined) continue
     var entry = `src/${page}/main.js`
-    var pageName = page
-    var template
-    var list = page.split('/')
-    if (list[0] === 'pages') {
-      list = list.slice(1)
-    }
-    if (list[1] === undefined || list[1] === '') {
-      pageName = `${list[0]}_index`
-      template = `public/${list[0]}.index.html`
-    } else {
-      pageName = ''
-      list.forEach(it => {
-        if (it !== 'pages') {
-          if (pageName === '') {
-            pageName = it.concat('_')
-          } else {
-            pageName = pageName.concat(it).concat('_')
-          }
-        }
-      })
-      pageName = pageName.substring(0, pageName.length - 1)
-      template = `public/${list[0]}.html`
-    }
+    var name = page.substr(page.lastIndexOf('/') + 1)
+    var pageName = name
+    var template = `public/${name}.html`
     const templateFile = path.resolve(__dirname, template)
     if (!fs.existsSync(templateFile)) {
       template = 'public/index.html'
@@ -47,7 +27,7 @@ const pages = {
     entry: 'src/main.js',
     template: 'public/index.html'
   },
-  ...autoPages(['pages/hello'])
+  ...autoPages(fs.readdirSync(path.resolve(__dirname, './src/pages')).map(it => `pages/${it}`))
 }
 
 module.exports = pages
