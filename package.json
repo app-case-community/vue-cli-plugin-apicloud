@@ -1,8 +1,9 @@
 {
   "name": "vue-cli-plugin-apicloud",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "vue-cli 3 plugin to add apicloud",
   "main": "index.js",
+  "typings": "types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/app-case-community/vue-cli-plugin-apicloud.git"
@@ -12,5 +13,8 @@
     "vue"
   ],
   "author": "Zhe Zhu",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vue": "^2.6.10"
+  }
 }
