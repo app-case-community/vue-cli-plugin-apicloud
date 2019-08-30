@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="wrap"
-    class="flex-wrap flex-vertical"
-  >
+  <div id="wrap" class="flex-wrap flex-vertical">
     <header>
       <ul>
         <li
@@ -12,15 +9,9 @@
         >{{tab.title}}</li>
       </ul>
     </header>
-    <div
-      id="main"
-      class="flex-con"
-    >
+    <div id="main" class="flex-con">
     </div>
-    <div
-      id="footer"
-      class="border-t"
-    >
+    <div id="footer" class="border-t">
       <ul class="flex-wrap">
         <li
           v-for="(tab, i) in tabs"

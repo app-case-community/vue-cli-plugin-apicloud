@@ -1,35 +1,26 @@
 <template>
-  <div
-    id="wrap"
-    class="flex-wrap flex-vertical"
-  >
-    <header class="border-b">
-      <b
-        @click="() => this.api.closeWin()"
-        class="ic-back"
-      ></b>
-      <div class="title"></div>
-      <b
-        @click="funActionSheet"
-        class="ic-check"
-      ></b>
+  <div id="wrap" class="flex-wrap flex-vertical" >
+    <header class="border-b" >
+      <b @click="doBack" class="ic-back"></b>
+      <div class="title">{{title}}</div>
+      <b @click="doFun"  class="ic-check"></b>
     </header>
-    <div
-      id="main"
-      class="flex-con"
-    >
-
-    </div>
+    <div id="main" class="flex-con" ></div>
   </div>
 </template>
 <script>
 export default {
+  data () {
+    return {
+      title: ''
+    }
+  },
   onReady () {
+    this.title = this.api.pageParam.name
     this.$api.fixStatusBar(this.$api.dom('header'))
-    this.$api.dom('.title').innerHTML = this.api.pageParam.name
     this.api.openFrame({
-      name: 'frm_mine',
-      url: './frm_mine.html',
+      name: '<%=frm %>',
+      url: './<%=frm %>.html',
       rect: {
         x: 0,
         y: this.$api.dom('header').offsetHeight,
@@ -38,25 +29,16 @@ export default {
       },
       bounces: true,
       pageParam: {
-        name: this.api.pageParam.name
+        name: this.title
       }
     })
   },
   methods: {
-    funActionSheet () {
-      this.api.actionSheet(
-        {
-          title: '底部弹出框',
-          cancelTitle: '取消',
-          destructiveTitle: '红色警告按钮',
-          buttons: ['按钮1', '按钮2', '按钮3']
-        },
-        function () {
-          // api.alert({
-          //     msg: '你刚点击了'+ret.buttonIndex
-          // });
-        }
-      )
+    doBack () {
+      this.api.closeWin()
+    },
+    doFun () {
+
     }
   }
 }
@@ -129,10 +111,10 @@ header b {
   background-size: 70% auto;
 }
 header b.ic-back {
-  background-image: url(./image/ic-back.png);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAY1BMVEX///9YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFgLuTaRAAAAIXRSTlMAABuHSCHk/2/8J/MY9kIkLertzPXSydveHuHwA9gPVBIWOBGIAAABDklEQVRYw+3X2Q6CMBCFYUGgiuKKC7i+/1OKFImlUxJnzp3z36g3X2IC7cxkommaphFFZPE0aT9RYJoZMwOCb8+KGNB6Zp6DwM4ziyUG/HjFCvOXHQ8Aup4cHHhicOhJQc8Tgr4nAwlPBFKeBCQ9AUh7fHBNe2ww5HHBoMcEwx4PzMMeC9xsrWd2e6/y+1vZ1fwaA3vvl8bAgwGDRzQYn8BgFJ/BYC8WCeaxGRWZr15Y5B4OQZF9fIVE/gEbEAVXAC1KLilSFF2jFSHKLnpCFI4ivigdljxRPM4NRfnAORABI7ErIoZ2R4SsFVVtxcsVtfh04g23mrVinQKXx0bMUuQ2Gt0fT+5jo2ma9re9ALA0HKKwjYGnAAAAAElFTkSuQmCC);
 }
 header b.ic-check {
-  background-image: url(./image/ic-check.png);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAACVBMVEX///9YWFhYWFjtK/ESAAAAA3RSTlMAAP/XdCtTAAAANklEQVRIx+3TsQ0AIAwDwcD+QyOhTEAQpLjrv7IcAZ+MdBbPTfwmLk0lFnuVP4v9Wdzuz3DBAgKIAa1qsMp7AAAAAElFTkSuQmCC);
   float: right;
 }
 header .title {

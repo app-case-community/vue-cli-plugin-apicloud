@@ -1,8 +1,26 @@
 const fs = require('fs')
-const path = require('path')
+const { createPage } = require('./libs/page')
+
+function normalizeConfig(args) {
+    const config = {}
+    for (const key in args) {
+        // if (renamedArrayArgs[key]) {
+        //     config[renamedArrayArgs[key]] = args[key].split(',')
+        // } else if (renamedArgs[key]) {
+        //     config[renamedArgs[key]] = args[key]
+        // } else if (key !== '_') {
+        config[camelize(key)] = args[key]
+        // }
+    }
+    return config
+}
+
+function camelize(str) {
+    return str.replace(/-(\w)/g, (_, c) => c ? c.toUpperCase() : '')
+}
+
 module.exports = (api, projectOptions) => {
     const isAndroid = process.env.PLATFORM_ENV === 'android'
-    console.log('isAndroid', isAndroid)
     api.chainWebpack(config => {
         config.module
             .rule('svg')
@@ -15,8 +33,8 @@ module.exports = (api, projectOptions) => {
             })
         const imagesRule = config.module.rule('images')
         var ruleImageLoader = imagesRule
-            .use('image-webpack-loader')
-            .loader('image-webpack-loader')
+            .use('@snicesoft/image-webpack-loader')
+            .loader('@snicesoft/image-webpack-loader')
         if (isAndroid) {
             ruleImageLoader.options({
                 bypassOnDebug: true,
@@ -36,24 +54,37 @@ module.exports = (api, projectOptions) => {
             })
             .end()
     })
-    api.registerCommand('ac', args => {
+    api.registerCommand('ac', {
+        usage: 'vue-cli-service ac <command> [options]',
+        commands: {
+            'add [options] <page-name>': 'create new page'
+        },
+        options: {
+            '--type [type]': '指定页面模板 (默认：default)'
+        }
+    }, args => {
         if (args._.length === 0) {
             // help
             return
         }
+        const argsConfig = normalizeConfig(args)
+        const config = Object.assign({
+            type: 'default',
+        }, argsConfig)
+        console.log('config', config)
         const pagesPath = api.resolve('./src/pages')
         const type = args._[0]
         switch (type) {
             case 'add':
-                const name = args._[1]
-                const pageType = 'default'
+                let name = args._[1]
                 if (name) {
+                    name = name.toLowerCase()
                     const newPageDir = `${pagesPath}/${name}`
                     if (fs.existsSync(newPageDir)) {
                         console.warn('page [' + name + '] exists.')
                         return
                     }
-                    createPage(newPageDir, pageType, name);
+                    createPage(newPageDir, config.type, name)
                 } else {
                     console.error('please use [ac add `new_page`]')
                 }
@@ -62,12 +93,4 @@ module.exports = (api, projectOptions) => {
                 break
         }
     })
-}
-
-function createPage(newPageDir, pageType, name) {
-    fs.mkdirSync(newPageDir);
-    const pageTmpDir = path.resolve(__dirname, './generator/page_templates/' + pageType);
-    fs.copyFileSync(pageTmpDir + '/App.vue', newPageDir + '/App.vue');
-    fs.copyFileSync(pageTmpDir + '/main.js', newPageDir + '/main.js');
-    console.log('create page [' + name + '] success.');
 }

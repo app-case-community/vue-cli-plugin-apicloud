@@ -1,15 +1,7 @@
 <template>
-  <div
-    id="wrap"
-    class="flex-wrap flex-vertical"
-  >
+  <div id="wrap" class="flex-wrap flex-vertical">
     <header class="border-b">APICloud</header>
-    <div
-      id="main"
-      class="flex-con"
-    >
-
-    </div>
+    <div id="main" class="flex-con"></div>
   </div>
 </template>
 <script>

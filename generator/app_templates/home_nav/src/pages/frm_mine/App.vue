@@ -1,12 +1,17 @@
 <template>
   <div>
-    <div class="empty"></div>
+    <div class="empty">{{title}}</div>
   </div>
 </template>
 <script>
 export default {
+  data () {
+    return {
+      title: ''
+    }
+  },
   onReady () {
-    this.$api.dom('.empty').innerHTML = this.api.pageParam.name + '页'
+    this.title = this.api.pageParam.name + '页'
   }
 }
 </script>

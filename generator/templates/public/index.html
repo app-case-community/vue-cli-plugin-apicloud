@@ -14,7 +14,8 @@
     <div id="app"></div>
     <script type="text/javascript" src="./static/js/api.js"></script>
     <script type="text/javascript" src="./static/js/init.js"></script>
-    <script type="text/javascript">$init(function(){$updateOrientation();});</script>
+    <script type="text/javascript" src="./static/js/fastclick.min.js"></script>
+    <script type="text/javascript">$init(function(){FastClick.attach(document.body);$updateOrientation();});</script>
     <!-- built files will be auto injected -->
   </body>
 </html>

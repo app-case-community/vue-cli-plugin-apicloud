@@ -9,14 +9,13 @@ module.exports = (api, opts, rootOptions) => {
             "build:ios": "cross-env PLATFORM_ENV=ios vue-cli-service build"
         },
         devDependencies: {
-            "image-webpack-loader": "^4.6.0",
+            "@snicesoft/image-webpack-loader": "^5.0.0",
             "apicloud-cli": "^0.2.0",
             "cross-env": "^5.2.0",
             "fs-extra": "^7.0.1",
         }
     })
     api.render('./templates')
-    console.log('opts.appTemplate', opts.appTemplate)
     if (opts.appTemplate) {
         api.render('./app_templates/' + opts.appTemplate)
     }

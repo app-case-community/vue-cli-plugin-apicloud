@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="header">
-            <a class="menu" tapmode="" @click="sliding"></a>
+            <a class="menu" @click="sliding"></a>
             <div class="title" >APICloud</div>
             <a></a>
         </div>

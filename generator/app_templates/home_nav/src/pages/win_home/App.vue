@@ -43,7 +43,6 @@
     >
       <div class="flex-con flex-wrap flex-vertical">
         <div
-          tapmode="hover"
           @click="funOpenArticle(1)"
           class="flex-wrap flex-con flex-2 layout-wrap"
         >
@@ -53,7 +52,6 @@
           </div>
         </div>
         <div
-          tapmode="hover"
           @click="funOpenArticle(2)"
           class="flex-wrap flex-con flex-2 layout-wrap"
         >
@@ -63,7 +61,6 @@
           </div>
         </div>
         <div
-          tapmode="hover"
           @click="funOpenArticle(3)"
           class="flex-wrap flex-con layout-wrap"
         >
@@ -75,7 +72,6 @@
       </div>
       <div class="flex-wrap flex-con flex-vertical">
         <div
-          tapmode="hover"
           @click="funOpenArticle(4)"
           class="flex-wrap flex-con layout-wrap"
         >
@@ -85,7 +81,6 @@
           </div>
         </div>
         <div
-          tapmode="hover"
           @click="funOpenArticle(5)"
           class="flex-wrap flex-con flex-2 layout-wrap"
         >
@@ -95,7 +90,6 @@
           </div>
         </div>
         <div
-          tapmode="hover"
           @click="funOpenArticle(6)"
           class="flex-wrap flex-con layout-wrap"
         >
@@ -106,7 +100,6 @@
         </div>
         <div class="flex-wrap flex-con">
           <div
-            tapmode="hover"
             @click="funOpenArticle(7)"
             class="flex-wrap flex-con layout-wrap"
           >
@@ -116,7 +109,6 @@
             </div>
           </div>
           <div
-            tapmode="hover"
             @click="funOpenArticle(8)"
             class="flex-wrap flex-con layout-wrap"
           >
