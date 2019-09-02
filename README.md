@@ -1,6 +1,12 @@
 # vue-cli-plugin-apicloud
 apicloud for vue-cli plugin
 
+## 项目说明
+
+* 默认是多页应用，所以未集成vue-router，如需要，请自行配置
+* 默认提供一个html模板，即public/index.html。
+* 支持不同页面不同html模板，只需要在public下复制index.html并改名为页面名称。比如pages/hello -> public/hello.html
+
 ## 使用
 
 * 安装
@@ -53,6 +59,31 @@ apicloud for vue-cli plugin
     * close
         
         关闭当前页面
+
+## Vue 实例扩展
+
+* onReady
+
+    代替window.apiready
+
+* onWindowChange
+
+    支持设备屏幕旋转监听
+
+* apiEvent
+
+    支持apicloud的页面事件监听，比如keyback
+
+    ```js
+    export default {
+        apiEvent: {
+            keyback () {
+                alert('按了返回键');
+            }
+        }
+    }
+    ```
+    更多事件，请查看[文档](https://docs.apicloud.com/Client-API/api#c3)
 
 ## 注意
 

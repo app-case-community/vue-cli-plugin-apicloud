@@ -11,7 +11,6 @@ function createBlank(newPageDir, pageType, name) {
     const pageTmpDir = getPageTemplate(pageType);
     fs.copyFileSync(pageTmpDir + '/App.vue', newPageDir + '/App.vue');
     fs.copyFileSync(pageTmpDir + '/main.js', newPageDir + '/main.js');
-    console.log('create page [' + name + '] success.');
 }
 
 function createDefault(newPageDir, pageType, name) {
@@ -20,8 +19,6 @@ function createDefault(newPageDir, pageType, name) {
     fs.mkdirSync(mainPage);
     fs.mkdirSync(framePage);
     const pageTmpDir = getPageTemplate(pageType);
-
-
     const str = fs.readFileSync(pageTmpDir + '/main/App.vue').toString()
     const vueStr = ejs.render(str, {
         frm: `${name}_frm`
@@ -30,19 +27,22 @@ function createDefault(newPageDir, pageType, name) {
     fs.copyFileSync(pageTmpDir + '/main/main.js', mainPage + '/main.js');
     fs.copyFileSync(pageTmpDir + '/frm/App.vue', framePage + '/App.vue');
     fs.copyFileSync(pageTmpDir + '/frm/main.js', framePage + '/main.js');
-    console.log('create page [' + name + '] success.');
 }
 module.exports = {
     createPage: function (newPageDir, pageType, name) {
+        let isCreated = false
         switch (pageType) {
             case 'blank':
                 createBlank(newPageDir, pageType, name);
+                isCreated = true
                 break;
             case 'default':
                 createDefault(newPageDir, pageType, name);
+                isCreated = true
                 break;
             default:
                 break;
         }
+        console.log('create page [' + name + '] ' + isCreated ? 'success' : 'fail' + '.');
     }
 }

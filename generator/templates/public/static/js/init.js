@@ -25,27 +25,26 @@
       return window.getComputedStyle(this)
     }
   })
-  window.$init = function (fn) {
-    window.apiready = function () {
-      if (window.api.systemType === 'ios') {
-        document.addEventListener('touchstart', function () { }, false)
-      }
-      document.dispatchEvent(new MessageEvent('apiready', {
-        data: {}
-      }))
-      fn && fn()
-    }
-  }
-  window.$updateOrientation = function (fn) {
+  var updateOrientation = function () {
     var update = function () {
       setTimeout(function () {
         document.dispatchEvent(new MessageEvent('updateOrientation', {
           data: {}
         }))
-        fn && fn()
       }, 200)
     }
     window.addEventListener('orientationchange', update, false)
-    window.addEventListener('resize', update, false)
+  }
+  window.$init = function (fn) {
+    window.apiready = function () {
+      if (window.api.systemType === 'ios') {
+        document.addEventListener('touchstart', function () { }, false)
+      }
+      updateOrientation()
+      document.dispatchEvent(new MessageEvent('apiready', {
+        data: {}
+      }))
+      fn && fn()
+    }
   }
 })(window)

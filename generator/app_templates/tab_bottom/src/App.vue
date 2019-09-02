@@ -184,6 +184,9 @@ header ul li.active {
 #footer ul li.active {
   color: #6ab494;
 }
+#footer ul li:active {
+  opacity: 0.8
+}
 #footer ul li:nth-child(1) {
   background-image: url(./assets/bottombtn0101.png);
 }

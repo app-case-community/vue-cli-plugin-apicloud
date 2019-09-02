@@ -71,7 +71,6 @@ module.exports = (api, projectOptions) => {
         const config = Object.assign({
             type: 'default',
         }, argsConfig)
-        console.log('config', config)
         const pagesPath = api.resolve('./src/pages')
         const type = args._[0]
         switch (type) {
