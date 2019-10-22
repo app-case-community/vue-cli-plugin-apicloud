@@ -11,7 +11,7 @@ export default {
     }
   },
   onReady () {
-    this.title = this.api.pageParam.name + '页'
+    this.title = this.api.pageParam.title + '页'
   }
 }
 </script>

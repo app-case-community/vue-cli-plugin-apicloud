@@ -20,7 +20,7 @@ Object.defineProperty(Vue.prototype, '$api', {
 // 打开页面
 var _openw = null
 Vue.prototype.$page = {
-  open (url, { title, anim, titleBarOpts, winOpts } = {}) {
+  open (url, { pageParam, animation, winOpts } = {}) {
     if (_openw) { return } // 防止快速点击
     url = url.endsWith('.html') ? url : url + '.html'
     var api = window.api
@@ -32,18 +32,9 @@ Vue.prototype.$page = {
     var params = {
       name,
       url,
-      pageParam: {
-        title,
-        titleBarOpts
-      },
+      pageParam,
+      animation,
       ...(winOpts || {})
-    }
-    if (anim) {
-      params.animation = {
-        type: anim,
-        subType: 'from_right',
-        duration: 300
-      }
     }
     api.openWin(params)
   },

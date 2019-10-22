@@ -81,10 +81,8 @@ export default {
           name: 'group',
           scrollEnabled: false,
           rect: {
-            x: 0,
-            y: this.$api.dom('header').offsetHeight,
-            w: this.api.winWidth,
-            h: this.$api.dom('#main').offsetHeight
+            marginTop: this.$api.dom('header').offsetHeight,
+            marginBottom: this.$api.dom('#footer').offsetHeight
           },
           index: 0,
           frames: frames

@@ -16,7 +16,7 @@ export default {
     }
   },
   onReady () {
-    this.title = this.api.pageParam.name
+    this.title = this.api.pageParam.title
     this.$api.fixStatusBar(this.$api.dom('header'))
     this.api.openFrame({
       name: '<%=frm %>',
@@ -29,7 +29,7 @@ export default {
       },
       bounces: true,
       pageParam: {
-        name: this.title
+        title: this.title
       }
     })
   },

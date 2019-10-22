@@ -3,8 +3,8 @@ const install = (Vue) => {
   install.installed = true
   Vue.mixin({
     beforeCreate () {
+      this._isApiready = false
       document.addEventListener('apiready', () => {
-        this.$options.onReady && this.$options.onReady.bind(this).call()
         if ('apiEvent' in this.$options) {
           const apiEvent = this.$options.apiEvent
           for (const key in apiEvent) {
@@ -18,10 +18,20 @@ const install = (Vue) => {
             }
           }
         }
+        if (this._isMounted) {
+          this._isApiready = true
+          this.$options.onReady && this.$options.onReady.bind(this).call()
+        }
       })
       document.addEventListener('updateOrientation', () => {
         this.$options.onWindowChange && this.$options.onWindowChange.bind(this).call()
       })
+    },
+    mounted () {
+      if (this._isApiready === false) {
+        this._isApiready = true
+        this.$options.onReady && this.$options.onReady.bind(this).call()
+      }
     }
   })
 }
