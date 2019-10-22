@@ -1,11 +1,16 @@
 <template>
   <div>
     <label id="con">Hello APP</label>
-    <div id='sys-info'></div>
+    <div v-html="html"></div>
   </div>
 </template>
 <script>
 export default {
+  data () {
+    return {
+      html: ''
+    }
+  },
   onReady () {
     var ver = this.api.version
     var sType = this.api.systemType
@@ -36,8 +41,7 @@ export default {
     str += '<li>子窗口宽度: ' + frameWidth + '</li>'
     str += '<li>子窗口高度: ' + frameHeight + '</li>'
     str += '</ul>'
-
-    this.$api.byId('sys-info').innerHTML = str
+    html = str
   }
 }
 </script>

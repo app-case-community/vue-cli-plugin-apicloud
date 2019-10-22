@@ -141,7 +141,7 @@ export default {
         name: 'win_webpage',
         url: './win_webpage.html',
         pageParam: {
-          name: '标题' + idx
+          title: '标题' + idx
         }
       })
     }

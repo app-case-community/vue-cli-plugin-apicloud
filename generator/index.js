@@ -13,6 +13,11 @@ module.exports = (api, opts, rootOptions) => {
             "apicloud-cli": "^0.2.0",
             "cross-env": "^5.2.0",
             "fs-extra": "^7.0.1",
+            "glob": "^7.1.5",
+            "less": "^3.10.3",
+            "less-loader": "^5.0.0",
+            "node-sass": "^4.9.0",
+            "sass-loader": "^7.1.0",
         }
     })
     api.render('./templates')

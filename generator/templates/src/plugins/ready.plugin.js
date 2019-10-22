@@ -18,8 +18,8 @@ const install = (Vue) => {
             }
           }
         }
+        this._isApiready = true
         if (this._isMounted) {
-          this._isApiready = true
           this.$options.onReady && this.$options.onReady.bind(this).call()
         }
       })
@@ -28,8 +28,7 @@ const install = (Vue) => {
       })
     },
     mounted () {
-      if (this._isApiready === false) {
-        this._isApiready = true
+      if (this._isApiready) {
         this.$options.onReady && this.$options.onReady.bind(this).call()
       }
     }

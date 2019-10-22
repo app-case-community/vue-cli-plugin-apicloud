@@ -10,11 +10,11 @@
 <script>
 export default {
   onReady () {
-    this.api.addEventListener({
-      name: 'keyback'
-    }, () => {
+  },
+  apiEvent: {
+    keyback (ret, err) {
       this.api.closeWidget()
-    })
+    }
   },
   methods: {
     sliding () {
