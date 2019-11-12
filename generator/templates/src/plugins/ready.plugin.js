@@ -20,7 +20,7 @@ const install = (Vue) => {
         }
         this._isApiready = true
         if (this._isMounted) {
-          this.$options.onReady && this.$options.onReady.bind(this).call()
+          this.__ready()
         }
       })
       document.addEventListener('updateOrientation', () => {
@@ -29,6 +29,19 @@ const install = (Vue) => {
     },
     mounted () {
       if (this._isApiready) {
+        this.__ready()
+      } else {
+        setTimeout(() => {
+          this.__ready()
+        }, 200)
+      }
+    },
+    methods: {
+      __ready () {
+        if (this.__readyed) {
+          return
+        }
+        this.__readyed = true
         this.$options.onReady && this.$options.onReady.bind(this).call()
       }
     }

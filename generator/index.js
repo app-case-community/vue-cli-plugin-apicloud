@@ -16,8 +16,10 @@ module.exports = (api, opts, rootOptions) => {
             "glob": "^7.1.5",
             "less": "^3.10.3",
             "less-loader": "^5.0.0",
-            "node-sass": "^4.9.0",
-            "sass-loader": "^7.1.0",
+            "node-sass": "^4.13.0",
+            "sass-loader": "^8.0.0",
+            "stylus": "^0.54.7",
+            "stylus-loader": "^3.0.2"
         }
     })
     api.render('./templates')
