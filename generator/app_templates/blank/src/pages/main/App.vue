@@ -41,7 +41,7 @@ export default {
     str += '<li>子窗口宽度: ' + frameWidth + '</li>'
     str += '<li>子窗口高度: ' + frameHeight + '</li>'
     str += '</ul>'
-    html = str
+    this.html = str
   }
 }
 </script>
